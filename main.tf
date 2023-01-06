@@ -43,15 +43,7 @@ resource "aws_security_group_rules"  "httpin" {
 
 }
 
-resource "aws_security_group_rules"  "adata "aws_ami" "app_ami" {
-  most_recent = true
-
-  filter {
-    name   = "name"
-    values = ["bitnami-tomcat-*-x86_64-hvm-ebs-nami"]
-  }
-
-  filter {llout" {
+resource "aws_security_group_rules"  "allout" {
   type = "egress"
   from_port      = 0
   to_port        = 0
