@@ -53,3 +53,4 @@ resource "aws_security_group_rule" "allout" {
   security_group_id = aws_security_group.blog.id
 
 }
+ 
