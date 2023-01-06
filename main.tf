@@ -37,9 +37,9 @@ resource "aws_security_group_rule" "httpin" {
   from_port      = 443
   to_port        = 443
   protocol       = "tcp"
-  cide_block     = ["0.0.0.0/0"]
+  cidr_block     = ["0.0.0.0/0"]
 
-  security_group = aws_security_group.blog.id
+  security_group_id = aws_security_group.blog.id
 
 }
 
@@ -48,8 +48,8 @@ resource "aws_security_group_rule" "allout" {
   from_port      = 0
   to_port        = 0
   protocol       = "-1"
-  cide_block     = ["0.0.0.0/0"]
+  cidr_block     = ["0.0.0.0/0"]
 
-  security_group = aws_security_group.blog.id
+  security_group_id = aws_security_group.blog.id
 
 }
