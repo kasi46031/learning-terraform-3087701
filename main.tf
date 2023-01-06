@@ -26,13 +26,13 @@ resource "aws_instance" "blog" {
 }
 
 resource "aws_security_group" "blog" {
- name = "blog"
- description = "web https traffic"
+  name = "blog"
+  description = "web https traffic"
 
- vpc_id = data.aws_vpc.default.id
+  vpc_id = data.aws_vpc.default.id
 }   
 
-resource "aws_security_group_rules"  "httpin" {
+resource "aws_security_group_rules" "httpin" {
   type = "ingress"
   from_port      = 443
   to_port        = 443
@@ -43,7 +43,7 @@ resource "aws_security_group_rules"  "httpin" {
 
 }
 
-resource "aws_security_group_rules"  "allout" {
+resource "aws_security_group_rules" "allout" {
   type = "egress"
   from_port      = 0
   to_port        = 0
