@@ -32,7 +32,7 @@ resource "aws_security_group" "blog" {
   vpc_id = data.aws_vpc.default.id
 }   
 
-resource "aws_security_group_rules" "httpin" {
+resource "aws_security_group_rule" "httpin" {
   type = "ingress"
   from_port      = 443
   to_port        = 443
@@ -43,7 +43,7 @@ resource "aws_security_group_rules" "httpin" {
 
 }
 
-resource "aws_security_group_rules" "allout" {
+resource "aws_security_group_rule" "allout" {
   type = "egress"
   from_port      = 0
   to_port        = 0
