@@ -28,8 +28,6 @@ module "sblog_vpc" {
 
 module "sblog_sg" {
   source  = "terraform-aws-modules/security-group/aws"
-  
-
   name = "blog"
 
   vpc_id = module.sblog_vpc.vpc_id
@@ -45,8 +43,6 @@ module "sblog_sg" {
 resource "aws_instance" "blog" {
   ami           = data.aws_ami.app_ami.id
   instance_type = var.instance_type
-
-  vpc_security_group_ids = [module.sblog_sg.security_group_id]
 
   tags = {
     Terraform = "true"
