@@ -9,8 +9,21 @@ data "aws_ami" "app_ami" {
   owners = ["979382823631"] # Bitnami
 }
 
-data "aws_vpc" "default"{
-  default = true
+module "vpc-blog" {
+  source = "terraform-aws-modules/vpc/aws"
+
+  name = "dev-vpc"
+  cidr = "10.0.0.0/16"
+
+  azs             = ["us-west-1a", "us-west-1b", "us-west-1c"]
+  #private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+  public_subnets  = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
+
+
+  tags = {
+    Terraform = "true"
+    Environment = "dev"
+  }
 }
 
 
@@ -31,7 +44,7 @@ module "sblog_sg" {
   version = "4.16.2"
   name = "blog_new"
 
-  vpc_id = data.aws_vpc.default.id
+  vpc_id = module.vpc-blog.public_subnets[0]
 
   ingress_rules = ["http-80-tcp", "https-443-tcp"]
   ingress_cidr_blocks = ["0.0.0.0/0"]
