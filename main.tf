@@ -42,7 +42,7 @@ module "sblog_sg" {
   version = "4.16.2"
   name = "blog_new"
 
-  vpc_id = module.vblog_vpc
+  vpc_id = module.vblog_vpc.vpc_id
 
   ingress_rules = ["http-80-tcp", "https-443-tcp"]
   ingress_cidr_blocks = ["0.0.0.0/0"]
