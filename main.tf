@@ -9,10 +9,10 @@ data "aws_ami" "app_ami" {
   owners = ["979382823631"] # Bitnami
 }
 
-module "vblog_vpc" {
+module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
 
-  name = "dev-vpc"
+  name = "dev"
   cidr = "10.0.0.0/16"
 
   azs             = ["us-west-2a", "us-west-2b", "us-west-2c"]
@@ -28,10 +28,10 @@ module "vblog_vpc" {
 
 module "sblog_sg" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "4.16.2"
+  
   name = "blog"
 
-  vpc_id = module.vblog_vpc.public_subnets[0]
+  vpc_id = module.vpc.public_subnets
 
   ingress_rules = ["http-80-tcp", "https-443-tcp"]
   ingress_cidr_blocks = ["0.0.0.0/0"]
