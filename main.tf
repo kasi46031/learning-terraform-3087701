@@ -9,14 +9,13 @@ data "aws_ami" "app_ami" {
   owners = ["979382823631"] # Bitnami
 }
 
-module "vpc" {
+module "vblog_vpc" {
   source = "terraform-aws-modules/vpc/aws"
 
   name = "dev-vpc"
   cidr = "10.0.0.0/16"
 
   azs             = ["us-west-2a", "us-west-2b", "us-west-2c"]
-  #private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
   public_subnets  = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
 
 
@@ -32,7 +31,6 @@ resource "aws_instance" "blog" {
   instance_type = var.instance_type
 
   vpc_security_group_ids = [module.sblog_sg.security_group_id]
-  #vpc_security_group_ids = [aws_security_group.blog.id]
 
   tags = {
     Name = "Terraform in speed"
@@ -44,7 +42,7 @@ module "sblog_sg" {
   version = "4.16.2"
   name = "blog_new"
 
-  vpc_id = module.vpc.public_subnets[0]
+  vpc_id = module.vblog_vpc.vpc_id.public_subnets[0]
 
   ingress_rules = ["http-80-tcp", "https-443-tcp"]
   ingress_cidr_blocks = ["0.0.0.0/0"]
@@ -53,43 +51,4 @@ module "sblog_sg" {
   egress_cidr_blocks = ["0.0.0.0/0"]
 }
 
-/*
-resource "aws_security_group" "blog" {
-  name = "blog"
-  description = "web https traffic"
-
-  vpc_id = data.aws_vpc.default.id
-}   
-
-resource "aws_security_group_rule" "httpin80" {
-  type = "ingress"
-  from_port      = 80
-  to_port        = 80
-  protocol       = "tcp"
-  cidr_blocks     = ["0.0.0.0/0"]
-
-  security_group_id = aws_security_group.blog.id
-
-}
-resource "aws_security_group_rule" "httpin443" {
-  type = "ingress"
-  from_port      = 443
-  to_port        = 443
-  protocol       = "tcp"
-  cidr_blocks     = ["0.0.0.0/0"]
-
-  security_group_id = aws_security_group.blog.id
-
-}
-
-resource "aws_security_group_rule" "allout" {
-  type = "egress"
-  from_port      = 0
-  to_port        = 0
-  protocol       = "-1"
-  cidr_blocks     = ["0.0.0.0/0"]
-
-  security_group_id = aws_security_group.blog.id
-
-}*/
- 
+/
