@@ -30,7 +30,7 @@ resource "aws_instance" "blog" {
   ami           = data.aws_ami.app_ami.id
   instance_type = var.instance_type
 
-  vpc_id = module.vblog_vpc.public_subnets[0]
+  
   vpc_security_group_ids = [module.sblog_sg.security_group_id]
 
   tags = {
@@ -43,6 +43,8 @@ module "sblog_sg" {
   version = "4.16.2"
   name = "blog"
 
+  vpc_id = module.vblog_vpc.public_subnets[0]
+  
   ingress_rules = ["http-80-tcp", "https-443-tcp"]
   ingress_cidr_blocks = ["0.0.0.0/0"]
 
