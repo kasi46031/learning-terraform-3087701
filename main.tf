@@ -43,7 +43,6 @@ module "blog_sg" {
 resource "aws_instance" "blog-ec2" {
   ami           = data.aws_ami.app_ami.id
   instance_type = var.instance_type
-  security_groups = module.blog_sg.security_groups.id
 
   tags = {
     Terraform = "true"
