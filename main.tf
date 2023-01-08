@@ -49,9 +49,6 @@ module "ec2_instance" {
 
   ami                    = data.aws_ami.app_ami.id
   instance_type          = var.instance_type
-  
-  vpc_id             = module.blog_vpc.vpc_id
-  security_groups    = [moudle.blog_sg.security_groups.id]
 
   tags = {
     Terraform   = "true"
