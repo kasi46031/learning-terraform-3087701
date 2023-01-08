@@ -79,7 +79,7 @@ module "blog_alb" {
       target_type      = "instance"
       targets = {
         my_target = {
-          target_id = module.blob_ec2.id
+          target_id = module.blob_ec2.ami.id
           port = 80
         }
       }
