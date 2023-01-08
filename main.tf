@@ -40,15 +40,27 @@ module "blog_sg" {
 }
 
 
-resource "aws_instance" "blog-ec2" {
-  ami           = data.aws_ami.app_ami.id
-  instance_type = var.instance_type
+module "ec2_instance" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
 
+  for_each = toset(["one", "two", "three"])
+
+  name = "instance-${each.key}"
+
+  ami                    = data.aws_ami.app_ami.id
+  instance_type          = var.instance_type
+  
+  vpc_id             = module.blog_vpc.vpc_id
+  subnets            = module.blog_vpc.public_subnets
+  security_groups    = [moudle.blog_sg.security_groups.id]
+  
   tags = {
-    Terraform = "true"
+    Terraform   = "true"
     Environment = "dev"
   }
 }
+
+
 
 module "blog_alb" {
   source  = "terraform-aws-modules/alb/aws"
@@ -58,6 +70,7 @@ module "blog_alb" {
 
   vpc_id             = module.blog_vpc.vpc_id
   subnets            = module.blog_vpc.public_subnets
+  security_groups    = [moudle.blog_sg.security_groups.id]
 
   access_logs = {
     bucket = "my-alb-logs"
