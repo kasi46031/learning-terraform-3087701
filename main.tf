@@ -51,9 +51,8 @@ module "ec2_instance" {
   instance_type          = var.instance_type
   
   vpc_id             = module.blog_vpc.vpc_id
-  subnets            = module.blog_vpc.public_subnets
   security_groups    = [moudle.blog_sg.security_groups.id]
-  
+
   tags = {
     Terraform   = "true"
     Environment = "dev"
