@@ -40,7 +40,7 @@ module "blog_sg" {
 }
 
 
-module "ec2_instance" {
+module "blob_ec2" {
   source  = "terraform-aws-modules/ec2-instance/aws"
 
   for_each = toset(["one", "two", "three"])
@@ -80,7 +80,7 @@ module "blog_alb" {
       target_type      = "instance"
       targets = {
         my_target = {
-          target_id = aws_instance.blog-ec2.id
+          target_id = module.blob_ec2.id
           port = 80
         }
       }
