@@ -4,6 +4,7 @@ module "dynamodb_table" {
   name      = var.properties.name
   hash_key  = var.properties.hashkey
   point_in_time_recovery_enabled  = true
+  server_side_encryption_enabled = true
 
   attributes = [
     {
@@ -17,6 +18,4 @@ module "dynamodb_table" {
     Environment = "Dev"
   }
   
-
-
 }
