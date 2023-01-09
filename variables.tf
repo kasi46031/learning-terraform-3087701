@@ -8,10 +8,6 @@ variable "name" {
     name = string
   })
 
-  default = {
-    name = "Sampletable"
-  }
-
 }
 
 variable "hashkey" {
@@ -19,9 +15,6 @@ variable "hashkey" {
 
   type = string
   
-  default = {
-    hashkey = "hashid"
-  }
 }
 
 variable "rangekey" {
@@ -29,9 +22,6 @@ variable "rangekey" {
   
   type = string
 
-  default = {
-    rangekey = "rangeid"
-  }
 }
 
 variable "pintrecovery" {
