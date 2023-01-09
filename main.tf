@@ -3,6 +3,7 @@ module "dynamodb_table" {
 
   name      = var.properties.name
   hash_key  = var.properties.hashkey
+  point_in_time_recovery_enabled  = true
 
   attributes = [
     {
@@ -16,9 +17,6 @@ module "dynamodb_table" {
     Environment = "Dev"
   }
   
-  point_in_time_recovery {
-    enabled = true
-  }
+
 
 }
-
