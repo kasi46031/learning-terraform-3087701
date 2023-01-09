@@ -11,10 +11,6 @@ module "dynamodb_table" {
     }
   ]
 
-  point_in_time_recovery {
-    enabled = true
-  }
-
   tags = {
     Terraform   = "true"
     Environment = "Dev"
