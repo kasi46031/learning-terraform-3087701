@@ -1,4 +1,15 @@
-variable "instance_type" {
-  description = "Type of EC2 instance to provision"
-  default     = "t3.nano"
-}
+variable "table_properties" {
+  description = "table properties"
+
+  type = object ({
+    name = string
+    hashkey = string
+    rangekey = string 
+  })
+
+  default = {
+    name = "globaltable"
+    hashkey = "userid"
+    rangekey = "tabletitle" 
+  }
+
