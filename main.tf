@@ -3,7 +3,6 @@ module "dynamodb_table" {
 
   name      = var.properties.name
   hash_key  = var.properties.hashkey
-  range_key = var.properties.rangekey
 
   attributes = [
     {

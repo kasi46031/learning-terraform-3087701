@@ -4,13 +4,11 @@ variable "properties" {
   type = object ({
     name = string
     hashkey = string
-    rangekey = string 
   })
 
   default = {
     name = "globaltable"
-    hashkey = "userid"
-    rangekey = "tabletitle" 
+    hashkey = "id"
   }
 
 }
