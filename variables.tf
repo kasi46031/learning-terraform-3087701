@@ -13,3 +13,4 @@ variable "table_properties" {
     rangekey = "tabletitle" 
   }
 
+}
