@@ -5,6 +5,7 @@ variable "name" {
   description = "Name of the DynamoDB table "
   
   type = string
+  default  = "exampletable"
 
 }
 
