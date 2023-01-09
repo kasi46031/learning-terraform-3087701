@@ -41,7 +41,7 @@ variable "attributes" {
       type = string
     }
   ))
-  default = []
+    #default = []
   }
 
 
