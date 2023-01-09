@@ -38,15 +38,28 @@ variable "rangekey" {
   }
 }
 
-variable "kmskey" {
-  description = "The attribute to use define encryption key"
+variable "pintrecovery" {
+  description = "point in time recovery"
   
   type = object ({
-    kmskey = string
+    pintrecovery = string
   })
 
   default = {
-    kmskey = "kmskeydetails"
+    pintrecovery = "true"
+  }
+}
+
+
+variable "ssencryption" {
+  description = "The attribute to use define encryption key"
+  
+  type = object ({
+    ssencryption = string
+  })
+
+  default = {
+    ssencryption = "true"
   }
 }
 

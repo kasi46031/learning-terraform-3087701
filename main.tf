@@ -6,12 +6,12 @@ resource "aws_dynamodb_table" "this" {
   range_key = var.rangekey
   
   point_in_time_recovery {
-    enabled = true
+    enabled = var.pintrecovery
   }
   
   server_side_encryption {
-    enabled     = true
-    kms_key_arn = aws_kms_key.this.arn
+    enabled     = var.ssencryption
+   # kms_key_arn = kmskey.value
   }
   
 
@@ -29,10 +29,4 @@ resource "aws_dynamodb_table" "this" {
   }
   
 }
-
-resource "aws_kms_key" "this" {
-  description  = var.kmskey
-  multi_region = false
-}
-
 
