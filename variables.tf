@@ -1,4 +1,4 @@
-variable "table_properties" {
+variable "properties" {
   description = "table properties"
 
   type = object ({
