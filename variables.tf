@@ -27,7 +27,6 @@ variable "hashkey" {
 }
 
 variable "rangekey" {
-  type        = string
   description = "The attribute to use as the range (sort) key.."
   
   type = object ({
@@ -40,7 +39,6 @@ variable "rangekey" {
 }
 
 variable "kmskey" {
-  type        = string
   description = "The attribute to use define encryption key"
   
   type = object ({
@@ -53,10 +51,9 @@ variable "kmskey" {
 }
 
 
-
-
 variable "attributes" {
   description = "Attributes inside the DynaomoDB table."
+  
   type = list(object(
     {
       name = string
