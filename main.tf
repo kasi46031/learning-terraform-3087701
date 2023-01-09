@@ -6,11 +6,8 @@ module "dynamodb_table" {
   range_key = var.rangekey
 
   point_in_time_recovery_enabled  = true
-
-  server_side_encryption {
-    enabled     = true
-    kms_key_arn = var.kmskey
-  }
+  server_side_encryption = true
+  
 
   dynamic "attribute" {
     for_each = var.attributes
@@ -26,4 +23,5 @@ module "dynamodb_table" {
   }
   
 }
+
 

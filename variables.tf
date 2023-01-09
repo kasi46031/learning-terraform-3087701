@@ -52,13 +52,12 @@ variable "kmskey" {
 
 
 variable "attributes" {
-  description = "Attributes inside the DynaomoDB table."
+  description = "List of nested attribute definitions. Only required for hash_key and range_key attributes. Each attribute has two properties: name - (Required) The name of the attribute, type - (Required) Attribute type, which must be a scalar type: S, N, or B for (S)tring, (N)umber or (B)inary data"
   
   type = list(object(
     {
       name = string
       type = string
-      #......add more attributes as per table definition
     }
   ))
   default = []
