@@ -24,12 +24,12 @@ variable "rangekey" {
 
 }
 
-
-
 variable "ssencryption" {
   description = "The attribute to use define encryption key"
   
   type = bool
+  default = true
+  
 }
 
 
