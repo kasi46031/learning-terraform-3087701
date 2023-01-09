@@ -17,7 +17,7 @@ variable "name" {
 variable "hashkey" {
   description = "The attribute to use as the hash (partition) key."
 
-  hashkey = string
+  type = string
   
   default = {
     hashkey = "hashid"
@@ -27,7 +27,7 @@ variable "hashkey" {
 variable "rangekey" {
   description = "The attribute to use as the range (sort) key.."
   
-  rangekey = string
+  type = string
 
   default = {
     rangekey = "rangeid"
@@ -37,7 +37,7 @@ variable "rangekey" {
 variable "pintrecovery" {
   description = "point in time recovery"
   
-  pintrecovery = bool
+ type = bool
  
   default = {
     pintrecovery = "true"
@@ -48,7 +48,7 @@ variable "pintrecovery" {
 variable "ssencryption" {
   description = "The attribute to use define encryption key"
   
-  ssencryption = bool
+  type = bool
 
   default = {
     ssencryption = "true"
