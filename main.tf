@@ -6,7 +6,7 @@ resource "aws_dynamodb_table" "this" {
   range_key = var.rangekey
   
   point_in_time_recovery {
-    enabled = var.pintrecovery
+    enabled = true
   }
   
   server_side_encryption {
