@@ -29,7 +29,7 @@ variable "ssencryption" {
   
   type = bool
   default = true
-  
+
 }
 
 
@@ -42,7 +42,7 @@ variable "attributes" {
       type = string
     }
   ))
-  default = []
+  default = ["id S", "title S"]
   }
 
 
