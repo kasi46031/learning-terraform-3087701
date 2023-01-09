@@ -38,11 +38,11 @@ variable "attributes" {
   
   type = list(object(
     {
-      name = string
-      type = string
+      attributename = string
+      attributetype = string
     }
   ))
-    #default = []
+    default = []
   }
 
 
