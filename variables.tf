@@ -61,7 +61,10 @@ variable "attributes" {
       #......add more attributes as per table definition
     }
   ))
-  default = ["id", "N"]
+  default = {
+    name = "id"
+    type = "N"
+  }
 }
 
 
