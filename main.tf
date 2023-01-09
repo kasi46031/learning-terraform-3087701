@@ -6,7 +6,7 @@ module "dynamodb_table" {
   range_key = var.rangekey
 
   point_in_time_recovery_enabled  = true
-  server_side_encryption = true
+  server_side_encryption_enabled = true
   
 
   dynamic "attribute" {
