@@ -42,7 +42,7 @@ variable "attributes" {
       type = string
     }
   ))
-  default = ["id S", "title S"]
+  default = ["id" "N"]
   }
 
 
