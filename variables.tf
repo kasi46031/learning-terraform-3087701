@@ -42,7 +42,7 @@ variable "pintrecovery" {
   description = "point in time recovery"
   
   type = object ({
-    pintrecovery = string
+    pintrecovery = bool
   })
 
   default = {
@@ -55,7 +55,7 @@ variable "ssencryption" {
   description = "The attribute to use define encryption key"
   
   type = object ({
-    ssencryption = string
+    ssencryption = bool
   })
 
   default = {
