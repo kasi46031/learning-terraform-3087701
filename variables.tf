@@ -4,9 +4,7 @@
 variable "name" {
   description = "Name of the DynamoDB table "
   
-  type = object ({
-    name = string
-  })
+  type = string
 
 }
 
@@ -14,13 +12,15 @@ variable "hashkey" {
   description = "The attribute to use as the hash (partition) key."
 
   type = string
+  default = "id"
   
 }
 
 variable "rangekey" {
   description = "The attribute to use as the range (sort) key.."
   
-  type = string
+  type = string 
+  default = "title"
 
 }
 
