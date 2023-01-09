@@ -1,17 +1,24 @@
 module "dynamodb_table" {
   source   = "terraform-aws-modules/dynamodb-table/aws"
 
-  name      = var.properties.name
-  hash_key  = var.properties.hashkey
-  point_in_time_recovery_enabled  = true
-  server_side_encryption_enabled = true
+  name      = var.name
+  hash_key  = var.hashkey
+  range_key = var.rangekey
 
-  attributes = [
-    {
-      name = "id"
-      type = "N"
+  point_in_time_recovery_enabled  = true
+
+  server_side_encryption {
+    enabled     = true
+    kms_key_arn = var.kmskey
+  }
+
+  dynamic "attribute" {
+    for_each = var.attributes
+    content {
+      name = attribute.value.name
+      type = attribute.value.type
     }
-  ]
+  }
 
   tags = {
     Terraform   = "true"
@@ -19,3 +26,4 @@ module "dynamodb_table" {
   }
   
 }
+
