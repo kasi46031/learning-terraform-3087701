@@ -25,6 +25,7 @@ variable "rangekey" {
 
 }
 
+
 variable "ssencryption" {
   description = "The attribute to use define encryption key"
   
@@ -44,11 +45,11 @@ variable "attributes" {
   ))
     default = [
       {
-      attributename = "id"
+      attributename = var.hashkey
       attributetype = "N"
       }, 
       {
-      attributename = "title"
+      attributename = var.rangekey
       attributetype = "S"
       }
     ]
