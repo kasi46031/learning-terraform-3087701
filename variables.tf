@@ -25,6 +25,22 @@ variable "rangekey" {
 
 }
 
+variable "readc" {
+  description = "The attribute to use as the range (sort) key.."
+  
+  type = string 
+  default = 1
+
+}
+
+variable "writec" {
+  description = "The attribute to use as the range (sort) key.."
+  
+  type = string 
+  default = 1
+
+}
+
 variable "pintrecovery" {
   description = "The attribute to use point in time recovery"
   
@@ -40,6 +56,10 @@ variable "ssencryption" {
   default = true
 
 }
+
+
+
+
 
 variable "attributes" {
   description = "List of nested attribute definitions. Only required for hash_key and range_key attributes. Each attribute has two properties: name - (Required) The name of the attribute, type - (Required) Attribute type, which must be a scalar type: S, N, or B for (S)tring, (N)umber or (B)inary data"

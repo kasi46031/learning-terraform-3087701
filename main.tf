@@ -5,8 +5,8 @@ resource "aws_dynamodb_table" "this" {
   hash_key  = var.hashkey
   range_key = var.rangekey
 
-  read_capacity = 1    
-  write_capacity  = 1
+  read_capacity = var.readc
+  write_capacity  = var.writec
   
   point_in_time_recovery {
     enabled = var.pintrecovery
