@@ -42,8 +42,18 @@ variable "attributes" {
       attributetype = string
     }
   ))
-    default = []
-  }
+    default = [
+      {
+      attributename = "hashid"
+      attributetype = "N"
+      }, 
+      {
+      attributename = "rangeid"
+      attributetype = "S"
+      }
+    ]
+}
+
 
 
 
