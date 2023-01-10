@@ -44,11 +44,11 @@ variable "attributes" {
   ))
     default = [
       {
-      attributename = "hashid"
+      attributename = "id"
       attributetype = "N"
       }, 
       {
-      attributename = "rangeid"
+      attributename = "title"
       attributetype = "S"
       }
     ]
