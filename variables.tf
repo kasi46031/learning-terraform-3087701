@@ -25,6 +25,13 @@ variable "rangekey" {
 
 }
 
+variable "pintrecovery" {
+  description = "The attribute to use point in time recovery"
+  
+  type = bool
+  default = true
+
+}
 
 variable "ssencryption" {
   description = "The attribute to use define encryption key"
