@@ -45,11 +45,11 @@ variable "attributes" {
   ))
     default = [
       {
-      attributename = var.hashkey
+      attributename = "id"
       attributetype = "N"
       }, 
       {
-      attributename = var.rangekey
+      attributename = "title"
       attributetype = "S"
       }
     ]
